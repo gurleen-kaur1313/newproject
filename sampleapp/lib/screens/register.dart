@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:sampleapp/constants/export_constants.dart';
+import 'package:sampleapp/holders/exports_holders.dart';
 import 'package:sampleapp/models/export_models.dart';
 import 'package:sampleapp/screens/export_screens.dart';
 
@@ -179,7 +180,7 @@ class _RegisterState extends State<Register> {
         setState(() {
           fileds.emailError.value = false;
           fileds.passwordError.value = false;
-          fileds.nameError.value = true;
+          fileds.nameError.value = false;
         });
       });
       return 0;
@@ -307,7 +308,7 @@ class _RegisterState extends State<Register> {
                   button.button.value = (buttonDisable) ? 5 : await signUp();
                   if (button.button.value == 2) {
                     await widget.auth.currentUser!.updateDisplayName(name);
-                    Get.offAll(() => Dashboard(auth: widget.auth));
+                    Get.offAll(() => DashboardHolder(auth: widget.auth));
                   }
                   Timer(Duration(milliseconds: 1500), () async {
                     buttonDisable = false;
