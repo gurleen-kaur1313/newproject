@@ -35,7 +35,7 @@ class Dashboard extends StatelessWidget {
               Container(
                 child: BoldText(
                   color: Colors.white,
-                  text: "Hello, Abhinav",
+                  text: "Hello, ${auth.currentUser!.displayName}",
                   size: 30,
                 ),
               ),
