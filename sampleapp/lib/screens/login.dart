@@ -1,17 +1,18 @@
 import 'dart:async';
 
-//import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:sampleapp/constants/export_constants.dart';
+import 'package:sampleapp/holders/exports_holders.dart';
 import 'package:sampleapp/models/export_models.dart';
 import 'package:sampleapp/screens/export_screens.dart';
 
 class Login extends StatefulWidget {
   final PageController controller;
-  //final FirebaseAuth auth;
-  const Login({Key? key, required this.controller,})
+  final FirebaseAuth auth;
+  const Login({Key? key, required this.controller, required this.auth,})
       : super(key: key);
 
   @override
@@ -150,20 +151,20 @@ class _LoginState extends State<Login> {
       });
       return 0;
     } 
-    // else {
-    //   try {
-    //     await widget.auth
-    //         .signInWithEmailAndPassword(email: email, password: password);
-    //   } on FirebaseAuthException catch (e) {
-    //     if (e.code == 'user-not-found') {
-    //       print('No user found for that email.');
-    //       return 3;
-    //     } else if (e.code == 'wrong-password') {
-    //       print('Wrong password provided for that user.');
-    //       return 3;
-    //     }
-    //   }
-    // }
+    else {
+      try {
+        await widget.auth
+            .signInWithEmailAndPassword(email: email, password: password);
+      } on FirebaseAuthException catch (e) {
+        if (e.code == 'user-not-found') {
+          print('No user found for that email.');
+          return 3;
+        } else if (e.code == 'wrong-password') {
+          print('Wrong password provided for that user.');
+          return 3;
+        }
+      }
+    }
 
      return 2;
   }
@@ -250,10 +251,10 @@ class _LoginState extends State<Login> {
                 ),
                 onPressed: () async {
                   button.button.value = (buttonDisable) ? 5 : await signIn();
-                  // if (button.button.value == 2) {
-                  //   await getLocation();
-                  //   Get.offAll(() => Dashboard(auth: widget.auth));
-                  // }
+                  if (button.button.value == 2) {
+                    
+                    Get.offAll(() => DashboardHolder(auth: widget.auth));
+                  }
                   Timer(Duration(milliseconds: 1500), () {
                     buttonDisable = false;
                     button.button.value = 0;

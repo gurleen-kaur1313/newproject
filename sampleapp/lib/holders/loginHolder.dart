@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sampleapp/screens/export_screens.dart';
-//import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginHolder extends StatefulWidget {
   const LoginHolder({Key? key}) : super(key: key);
@@ -11,7 +11,7 @@ class LoginHolder extends StatefulWidget {
 
 class _LoginHolderState extends State<LoginHolder> {
   final PageController _controller = new PageController();
-  // final FirebaseAuth auth = FirebaseAuth.instance;
+  final FirebaseAuth auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,11 +23,11 @@ class _LoginHolderState extends State<LoginHolder> {
         children: [
           Login(
             controller: _controller,
-            //auth: auth,
+            auth: auth,
           ),
           Register(
             controller: _controller,
-            //auth: auth,
+            auth: auth,
           ),
         ],
       )),

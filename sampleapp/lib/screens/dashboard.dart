@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:sampleapp/constants/subject.dart';
 import 'package:sampleapp/constants/texts.dart';
@@ -5,7 +6,8 @@ import 'package:sampleapp/constants/quotes.dart';
 import 'dart:math';
 
 class Dashboard extends StatelessWidget {
-  const Dashboard({Key? key}) : super(key: key);
+  const Dashboard({Key? key, required this.auth}) : super(key: key);
+  final FirebaseAuth auth;
   static Color red = Color(0xffce1d3f);
   static Color blue = Color(0xff222b56);
   static Color grey = Color(0xffc7cade);

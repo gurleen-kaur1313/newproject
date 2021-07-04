@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sampleapp/screens/export_screens.dart';
@@ -7,7 +8,8 @@ class CurrentPage extends GetxController {
 }
 
 class DashboardHolder extends StatefulWidget {
-  const DashboardHolder({Key? key}) : super(key: key);
+  const DashboardHolder({Key? key, required this.auth}) : super(key: key);
+  final FirebaseAuth auth;
 
   @override
   _DashboardHolderState createState() => _DashboardHolderState();
@@ -59,9 +61,8 @@ class _DashboardHolderState extends State<DashboardHolder> {
         },
         controller: controller,
         children: [
-          Dashboard(
+          Dashboard(auth: widget.auth,
               //   // controller: _controller,
-              //   //auth: auth,
               ),
           Courses(),
         ],
