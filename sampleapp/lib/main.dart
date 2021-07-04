@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:sampleapp/screens/export_screens.dart';
 
 import 'holders/exports_holders.dart';
 
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.light,
         primarySwatch: Colors.grey,
       ),
-      home: DashboardHolder(),
+      home: Content(),
     );
   }
 }
