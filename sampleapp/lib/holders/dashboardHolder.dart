@@ -19,12 +19,11 @@ class _DashboardHolderState extends State<DashboardHolder> {
       body: SafeArea(
           child: PageView(
         controller: _controller,
-        physics: NeverScrollableScrollPhysics(),
         children: [
-          // Dashboard(
+          Dashboard(
           //   // controller: _controller,
           //   //auth: auth,
-          // ),
+           ),
           Courses(),
         ],
       )),

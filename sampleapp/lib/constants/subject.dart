@@ -9,9 +9,13 @@ class Subject extends StatelessWidget {
     return Container(
                     padding: EdgeInsets.all(20),
                     margin: EdgeInsets.all(10),
-                    height: 80,
+                    height: 60,
                     width: 200,
-                    color: Colors.yellow,
+                    decoration: BoxDecoration(
+                                      color: Colors.grey[300],
+                                      borderRadius: BorderRadius.circular(25),
+                    ),
+    
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.stretch,

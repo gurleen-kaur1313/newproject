@@ -4,6 +4,8 @@ import 'package:sampleapp/constants/texts.dart';
 import 'package:sampleapp/constants/quotes.dart';
 import 'dart:math';
 
+import 'package:sampleapp/screens/bottomnavigation.dart';
+
 class Dashboard extends StatelessWidget {
   const Dashboard({ Key? key }) : super(key: key);
   static Color red = Color(0xffce1d3f);
@@ -65,6 +67,7 @@ class Dashboard extends StatelessWidget {
                 ],
               ),
             ),
+            Nav(),
         ],
       ),
     );
