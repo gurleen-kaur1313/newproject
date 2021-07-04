@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sampleapp/constants/subject.dart';
 import 'package:sampleapp/constants/texts.dart';
 import 'package:sampleapp/constants/quotes.dart';
 import 'dart:math';
@@ -52,9 +53,17 @@ class Dashboard extends StatelessWidget {
               margin: EdgeInsets.fromLTRB(10, 10, 0, 10),
               child: RegularText(color: red,text:"Pick up where you left..", size: 15,),
             ),
-            ListView(
-              scrollDirection: Axis.horizontal,
-              
+            Expanded(
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: [
+                  
+                  Subject(),
+                  Subject(),
+                  Subject(),
+                  Subject(),
+                ],
+              ),
             ),
         ],
       ),
