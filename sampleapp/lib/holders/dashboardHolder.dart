@@ -21,10 +21,11 @@ class _DashboardHolderState extends State<DashboardHolder> {
         controller: _controller,
         physics: NeverScrollableScrollPhysics(),
         children: [
-          Dashboard(
-            // controller: _controller,
-            //auth: auth,
-          ),
+          // Dashboard(
+          //   // controller: _controller,
+          //   //auth: auth,
+          // ),
+          Courses(),
         ],
       )),
     );
