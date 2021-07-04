@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.light,
         primarySwatch: Colors.grey,
       ),
-      home: DashboardHolder(),
+      home: LoginHolder(),
     );
   }
 }

@@ -213,7 +213,7 @@ class _RegisterState extends State<Register> {
             alignment: Alignment.centerLeft,
             height: 200,
             child: Image.asset(
-              "lib/assets/register.gif",
+              "lib/assets/books2.gif",
               fit: BoxFit.contain,
             ),
           ),

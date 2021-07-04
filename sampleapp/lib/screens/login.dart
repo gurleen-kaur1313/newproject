@@ -178,7 +178,7 @@ class _LoginState extends State<Login> {
           child: Container(
             alignment: Alignment.centerLeft,
             height: 200,
-            child: Image.asset("lib/assets/services.gif"),
+            child: Image.asset("lib/assets/bookstack.gif"),
           ),
         ),
         Container(

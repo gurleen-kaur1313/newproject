@@ -6,6 +6,7 @@ class Courses extends StatelessWidget {
   static Color red = Color(0xffce1d3f);
   static Color blue = Color(0xff222b56);
   static Color grey = Color(0xffc7cade);
+  static Color yellow = Color(0xffFFFF66);
 
   @override
   Widget build(BuildContext context) {
@@ -35,11 +36,228 @@ class Courses extends StatelessWidget {
                   Container(
                     child: RegularText(color: Colors.white,text:"Find a course you want to learn", size: 15,),
                   ),
-                 
+             
+
+
                 ],
               ),
           ),
-          
+          Expanded(
+            child: GridView.count(
+            primary: false,
+            padding: const EdgeInsets.all(20),
+            crossAxisSpacing: 10,
+            mainAxisSpacing: 10,
+            crossAxisCount: 2,
+            children: <Widget>[
+              Container(
+                height: 70,
+                width: 30,
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(borderRadius: BorderRadius.circular(25), color: yellow,),
+                
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      child: BoldText(
+                        text: "General Knowledge",
+                        size: 15,
+                        color: Colors.black,
+                        ),
+                    ),
+                     Container(
+                      child: RegularText(
+                        text: "16 chapters",
+                        size: 15,
+                        color: Colors.black,
+                        ),
+                    ),
+                     Container(
+                      child: BoldText(
+                        text: "120 lessons",
+                        size: 15,
+                        color: Colors.black,
+                        ),
+                    ),
+                  ],
+                ),
+              ),
+          Container(
+                height: 70,
+                width: 30,
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(borderRadius: BorderRadius.circular(25), color: yellow,),
+                
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      child: BoldText(
+                        text: "General Knowledge",
+                        size: 15,
+                        color: Colors.black,
+                        ),
+                    ),
+                     Container(
+                      child: RegularText(
+                        text: "16 chapters",
+                        size: 15,
+                        color: Colors.black,
+                        ),
+                    ),
+                     Container(
+                      child: BoldText(
+                        text: "120 lessons",
+                        size: 15,
+                        color: Colors.black,
+                        ),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                height: 70,
+                width: 30,
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(borderRadius: BorderRadius.circular(25), color: yellow,),
+                
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      child: BoldText(
+                        text: "General Knowledge",
+                        size: 15,
+                        color: Colors.black,
+                        ),
+                    ),
+                     Container(
+                      child: RegularText(
+                        text: "16 chapters",
+                        size: 15,
+                        color: Colors.black,
+                        ),
+                    ),
+                     Container(
+                      child: BoldText(
+                        text: "120 lessons",
+                        size: 15,
+                        color: Colors.black,
+                        ),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                height: 70,
+                width: 30,
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(borderRadius: BorderRadius.circular(25), color: yellow,),
+                
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      child: BoldText(
+                        text: "General Knowledge",
+                        size: 15,
+                        color: Colors.black,
+                        ),
+                    ),
+                     Container(
+                      child: RegularText(
+                        text: "16 chapters",
+                        size: 15,
+                        color: Colors.black,
+                        ),
+                    ),
+                     Container(
+                      child: BoldText(
+                        text: "120 lessons",
+                        size: 15,
+                        color: Colors.black,
+                        ),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                height: 70,
+                width: 30,
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(borderRadius: BorderRadius.circular(25), color: yellow,),
+                
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      child: BoldText(
+                        text: "General Knowledge",
+                        size: 15,
+                        color: Colors.black,
+                        ),
+                    ),
+                     Container(
+                      child: RegularText(
+                        text: "16 chapters",
+                        size: 15,
+                        color: Colors.black,
+                        ),
+                    ),
+                     Container(
+                      child: BoldText(
+                        text: "120 lessons",
+                        size: 15,
+                        color: Colors.black,
+                        ),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                height: 70,
+                width: 30,
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(borderRadius: BorderRadius.circular(25), color: yellow,),
+                
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      child: BoldText(
+                        text: "General Knowledge",
+                        size: 15,
+                        color: Colors.black,
+                        ),
+                    ),
+                     Container(
+                      child: RegularText(
+                        text: "16 chapters",
+                        size: 15,
+                        color: Colors.black,
+                        ),
+                    ),
+                     Container(
+                      child: BoldText(
+                        text: "120 lessons",
+                        size: 15,
+                        color: Colors.black,
+                        ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+          )
+
         ],
       ),
     );
