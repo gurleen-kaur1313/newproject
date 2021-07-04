@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sampleapp/constants/texts.dart';
+import 'package:sampleapp/constants/quotes.dart';
+import 'dart:math';
 
 class Dashboard extends StatelessWidget {
   const Dashboard({ Key? key }) : super(key: key);
@@ -35,15 +37,24 @@ class Dashboard extends StatelessWidget {
                   Container(
                     child: RegularText(color: Colors.white,text:"What would you like to learn today?", size: 15,),
                   ),
-                  Container(
+                  SizedBox(height: 20,),
+                   Container(
                     child: RegularText(
-                      color: Colors.white,
-                      text:"What would you like to learn today?",
+                      color: grey,
+                      text:list[Random().nextInt(list.length)],
                        size: 15,
                        ),
                   ),
                 ],
               ),
+            ),
+            Container(
+              margin: EdgeInsets.fromLTRB(10, 10, 0, 10),
+              child: RegularText(color: red,text:"Pick up where you left..", size: 15,),
+            ),
+            ListView(
+              scrollDirection: Axis.horizontal,
+              
             ),
         ],
       ),
