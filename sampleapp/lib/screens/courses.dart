@@ -21,11 +21,11 @@ class Courses extends StatelessWidget {
         Container(
           alignment: Alignment.center,
           height: 200,
-          decoration: BoxDecoration(
-              color: blue,
-              borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(25),
-                  bottomRight: Radius.circular(25))),
+          // decoration: BoxDecoration(
+          //     color: blue,
+          //     borderRadius: BorderRadius.only(
+          //         bottomLeft: Radius.circular(25),
+          //         bottomRight: Radius.circular(25))),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -33,14 +33,14 @@ class Courses extends StatelessWidget {
             children: [
               Container(
                 child: BoldText(
-                  color: Colors.white,
+                  color: Colors.black,
                   text: "All Courses",
-                  size: 30,
+                  size: 40,
                 ),
               ),
               Container(
                 child: RegularText(
-                  color: Colors.white,
+                  color: Colors.black,
                   text: "Find a course you want to learn",
                   size: 15,
                 ),
