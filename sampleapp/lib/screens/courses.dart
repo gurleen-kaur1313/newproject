@@ -19,8 +19,8 @@ class Courses extends StatelessWidget {
       mainAxisSize: MainAxisSize.max,
       children: [
         Container(
+          margin: EdgeInsets.fromLTRB(20, 20, 20, 20),
           alignment: Alignment.center,
-          height: 200,
           // decoration: BoxDecoration(
           //     color: blue,
           //     borderRadius: BorderRadius.only(
