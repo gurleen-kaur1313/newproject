@@ -1,8 +1,13 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:sampleapp/constants/export_constants.dart';
 
 class Content extends StatelessWidget {
-  const Content({Key? key}) : super(key: key);
+ Content({Key? key, required this.x}) : super(key: key);
+  final String x;
+  final FirebaseFirestore allsubjects = FirebaseFirestore.instance;
   static Color red = Color(0xffce1d3f);
   static Color blue = Color(0xff222b56);
   static Color grey = Color(0xffc7cade);
@@ -101,11 +106,54 @@ class Content extends StatelessWidget {
                             width: 5,
                             color: blue,
                           ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Row(
+                          StreamBuilder<QuerySnapshot>(
+          stream:
+              allsubjects.collection(x).snapshots(),
+          builder:
+              (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+            if (snapshot.hasError) {
+              return Text('Something went wrong');
+            }
+
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Expanded(
+                  child: Center(
+                child: SpinKitDoubleBounce(
+                  color: Colors.black,
+                  size: 50.0,
+                ),
+              ));
+            }
+
+            if (!snapshot.hasData) {
+              return Expanded(
+                  child: Center(
+                      child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  BoldText(
+                      text: "No data Found!", color: Colors.black, size: 17),
+                  SizedBox(width: 8),
+                  Icon(
+                    Icons.error,
+                    color: Colors.black,
+                    size: 30,
+                  ),
+                ],
+              )));
+            }
+
+            return Container(
+              
+              child: new ListView(
+                scrollDirection: Axis.horizontal,
+                shrinkWrap: true,
+                children: snapshot.data!.docs.map((DocumentSnapshot document) {
+                  Map<String, dynamic> data =
+                      document.data() as Map<String, dynamic>;
+                  return  Container(
+                    height: 60,
+                    child: Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
@@ -129,109 +177,117 @@ class Content extends StatelessWidget {
                                       ),
                                       child: RegularText(
                                         size: 15,
-                                        text: "Chapter 1: Number system",
+                                        text: "Chapter: ${data["chapter"]}",
                                         color: grey,
                                       ),
                                     ),
                                   ),
                                 ],
                               ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    alignment: Alignment.center,
-                                    margin: EdgeInsets.fromLTRB(6, 10, 5, 10),
-                                    padding: EdgeInsets.all(5),
-                                    height: 45,
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: grey,
-                                    ),
-                                    child: Icon(Icons.check, color: blue),
-                                  ),
-                                  Expanded(
-                                    child: Container(
-                                      padding: EdgeInsets.all(13),
-                                      decoration: BoxDecoration(
-                                        color: blue,
-                                        borderRadius: BorderRadius.circular(10),
-                                      ),
-                                      child: RegularText(
-                                        size: 15,
-                                        text: "Chapter 1: Number system",
-                                        color: grey,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    alignment: Alignment.center,
-                                    margin: EdgeInsets.fromLTRB(6, 10, 5, 10),
-                                    padding: EdgeInsets.all(5),
-                                    height: 45,
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: grey,
-                                    ),
-                                    child: Icon(Icons.check, color: blue),
-                                  ),
-                                  Expanded(
-                                    child: Container(
-                                      padding: EdgeInsets.all(13),
-                                      decoration: BoxDecoration(
-                                        color: blue,
-                                        borderRadius: BorderRadius.circular(10),
-                                      ),
-                                      child: RegularText(
-                                        size: 15,
-                                        text: "Chapter 1: Number system",
-                                        color: grey,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    alignment: Alignment.center,
-                                    margin: EdgeInsets.fromLTRB(6, 10, 5, 10),
-                                    padding: EdgeInsets.all(5),
-                                    height: 45,
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: grey,
-                                    ),
-                                    child: Icon(Icons.check, color: blue),
-                                  ),
-                                  Expanded(
-                                    child: Container(
-                                      padding: EdgeInsets.all(13),
-                                      decoration: BoxDecoration(
-                                        color: blue,
-                                        borderRadius: BorderRadius.circular(10),
-                                      ),
-                                      child: RegularText(
-                                        size: 15,
-                                        text: "Chapter 1: Number system",
-                                        color: grey,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
+                  );
+                 
+                }).toList(),
+              ),
+            );
+          },
+        ),
+                         
+                             
+                              // Row(
+                              //   mainAxisAlignment: MainAxisAlignment.start,
+                              //   crossAxisAlignment: CrossAxisAlignment.center,
+                              //   children: [
+                              //     Container(
+                              //       alignment: Alignment.center,
+                              //       margin: EdgeInsets.fromLTRB(6, 10, 5, 10),
+                              //       padding: EdgeInsets.all(5),
+                              //       height: 45,
+                              //       decoration: BoxDecoration(
+                              //         shape: BoxShape.circle,
+                              //         color: grey,
+                              //       ),
+                              //       child: Icon(Icons.check, color: blue),
+                              //     ),
+                              //     Expanded(
+                              //       child: Container(
+                              //         padding: EdgeInsets.all(13),
+                              //         decoration: BoxDecoration(
+                              //           color: blue,
+                              //           borderRadius: BorderRadius.circular(10),
+                              //         ),
+                              //         child: RegularText(
+                              //           size: 15,
+                              //           text: "Chapter 1: Number system",
+                              //           color: grey,
+                              //         ),
+                              //       ),
+                              //     ),
+                              //   ],
+                              // ),
+                              // Row(
+                              //   mainAxisAlignment: MainAxisAlignment.start,
+                              //   crossAxisAlignment: CrossAxisAlignment.center,
+                              //   children: [
+                              //     Container(
+                              //       alignment: Alignment.center,
+                              //       margin: EdgeInsets.fromLTRB(6, 10, 5, 10),
+                              //       padding: EdgeInsets.all(5),
+                              //       height: 45,
+                              //       decoration: BoxDecoration(
+                              //         shape: BoxShape.circle,
+                              //         color: grey,
+                              //       ),
+                              //       child: Icon(Icons.check, color: blue),
+                              //     ),
+                              //     Expanded(
+                              //       child: Container(
+                              //         padding: EdgeInsets.all(13),
+                              //         decoration: BoxDecoration(
+                              //           color: blue,
+                              //           borderRadius: BorderRadius.circular(10),
+                              //         ),
+                              //         child: RegularText(
+                              //           size: 15,
+                              //           text: "Chapter 1: Number system",
+                              //           color: grey,
+                              //         ),
+                              //       ),
+                              //     ),
+                              //   ],
+                              // ),
+                              // Row(
+                              //   mainAxisAlignment: MainAxisAlignment.start,
+                              //   crossAxisAlignment: CrossAxisAlignment.center,
+                              //   children: [
+                              //     Container(
+                              //       alignment: Alignment.center,
+                              //       margin: EdgeInsets.fromLTRB(6, 10, 5, 10),
+                              //       padding: EdgeInsets.all(5),
+                              //       height: 45,
+                              //       decoration: BoxDecoration(
+                              //         shape: BoxShape.circle,
+                              //         color: grey,
+                              //       ),
+                              //       child: Icon(Icons.check, color: blue),
+                              //     ),
+                              //     Expanded(
+                              //       child: Container(
+                              //         padding: EdgeInsets.all(13),
+                              //         decoration: BoxDecoration(
+                              //           color: blue,
+                              //           borderRadius: BorderRadius.circular(10),
+                              //         ),
+                              //         child: RegularText(
+                              //           size: 15,
+                              //           text: "Chapter 1: Number system",
+                              //           color: grey,
+                              //         ),
+                              //       ),
+                              //     ),
+                              //   ],
+                              // ),
                           
-                            ],
-                          ),
+                           
                         ],
                       ),
                     ),

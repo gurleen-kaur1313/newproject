@@ -2,9 +2,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:get/get.dart';
 import 'package:sampleapp/constants/texts.dart';
 import 'package:sampleapp/constants/quotes.dart';
 import 'dart:math';
+
+import 'package:sampleapp/screens/export_screens.dart';
 
 class Dashboard extends StatelessWidget {
   Dashboard({Key? key, required this.auth}) : super(key: key);
@@ -126,76 +129,81 @@ class Dashboard extends StatelessWidget {
                 children: snapshot.data!.docs.map((DocumentSnapshot document) {
                   Map<String, dynamic> data =
                       document.data() as Map<String, dynamic>;
-                  return Container(
-                    height: 150,
-                    width: 150,
-                    margin: EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(25),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black,
-                          offset: Offset(0, 0),
-                          blurRadius: 6,
-                          spreadRadius: 0,
-                        ),
-                      ],
-                      image: DecorationImage(
-                        image: NetworkImage(data["subjectImage"]),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
+                  return GestureDetector(
+                    onTap:(){
+                      Get.to(Content(x: data["subjectName"],));
+                    },
                     child: Container(
+                      height: 150,
+                      width: 150,
+                      margin: EdgeInsets.all(10),
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Colors.black.withOpacity(0.3),
-                      ),
-                      padding: EdgeInsets.all(20),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Container(
-                            alignment: Alignment.center,
-                            padding: EdgeInsets.all(7),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(15),
-                              color: Colors.white.withOpacity(0.7),
-                            ),
-                            child: BoldText(
-                              text: data["subjectName"],
-                              size: 15,
-                              color: Colors.black,
-                            ),
+                        borderRadius: BorderRadius.circular(25),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black,
+                            offset: Offset(0, 0),
+                            blurRadius: 6,
+                            spreadRadius: 0,
                           ),
-                          Container(
-                            padding: EdgeInsets.all(10),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Container(
-                                  alignment: Alignment.center,
-                                  child: RegularText(
-                                    text:
-                                        "Chapters : " + data["subjectChapters"],
-                                    size: 11,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                                Container(
-                                  alignment: Alignment.center,
-                                  child: RegularText(
-                                    text:
-                                        "Lectures : " + data["subjectLectures"],
-                                    size: 11,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          )
                         ],
+                        image: DecorationImage(
+                          image: NetworkImage(data["subjectImage"]),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: Colors.black.withOpacity(0.3),
+                        ),
+                        padding: EdgeInsets.all(20),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Container(
+                              alignment: Alignment.center,
+                              padding: EdgeInsets.all(7),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(15),
+                                color: Colors.white.withOpacity(0.7),
+                              ),
+                              child: BoldText(
+                                text: data["subjectName"],
+                                size: 15,
+                                color: Colors.black,
+                              ),
+                            ),
+                            Container(
+                              padding: EdgeInsets.all(10),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Container(
+                                    alignment: Alignment.center,
+                                    child: RegularText(
+                                      text:
+                                          "Chapters : " + data["subjectChapters"],
+                                      size: 11,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  Container(
+                                    alignment: Alignment.center,
+                                    child: RegularText(
+                                      text:
+                                          "Lectures : " + data["subjectLectures"],
+                                      size: 11,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                     ),
                   );
