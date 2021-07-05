@@ -3,3 +3,4 @@ export 'register.dart';
 export 'dashboard.dart';
 export 'courses.dart';
 export 'coursedetails.dart';
+export 'profile.dart';

@@ -65,6 +65,7 @@ class _DashboardHolderState extends State<DashboardHolder> {
               //   // controller: _controller,
               ),
           Courses(),
+          Profile(auth: widget.auth,),
         ],
       )),
     );
