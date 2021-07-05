@@ -34,18 +34,29 @@ class Courses extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Container(
-                child: BoldText(
+                child: WeightText(
+                  weight: FontWeight.bold,
                   color: Colors.black,
                   text: "All Courses",
                   size: 40,
                 ),
               ),
-              Container(
-                child: RegularText(
-                  color: Colors.black,
-                  text: "Find a course you want to learn",
-                  size: 15,
-                ),
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(
+                    Icons.menu_book_sharp,
+                    color: Colors.black,
+                  ),
+                  SizedBox(width: 10),
+                  Container(
+                    child: RegularText(
+                      color: Colors.black,
+                      text: "Find a course you want to learn",
+                      size: 15,
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
@@ -94,35 +105,42 @@ class Courses extends StatelessWidget {
                       document.data() as Map<String, dynamic>;
 
                   return GestureDetector(
-                    onTap:(){
-                      allsubjects.collection(auth.currentUser!.uid.toString()).doc(
-                        data["name"]
-                      ).set(
-                        {
-                          "subjectName":data["name"],
-                          "subjectImage":data["image"],
-                          "subjectChapters":data["chapters"],
-                          "subjectLectures":data["lectures"],
-                        }
-                      );
-                      
+                    onTap: () {
+                      allsubjects
+                          .collection(auth.currentUser!.uid.toString())
+                          .doc(data["name"])
+                          .set({
+                        "subjectName": data["name"],
+                        "subjectImage": data["image"],
+                        "subjectChapters": data["chapters"],
+                        "subjectLectures": data["lectures"],
+                      });
                     },
                     child: Container(
                       height: 150,
                       width: 150,
-                      margin: EdgeInsets.all(10),
-                      padding: EdgeInsets.all(20),
+                      margin: EdgeInsets.all(15),
+                      // padding: EdgeInsets.all(20),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(25),
-                        image: DecorationImage(image: NetworkImage(data["image"]),
-                        fit: BoxFit.cover,
+                        boxShadow: [
+                          BoxShadow(offset: Offset(0, 2), blurRadius: 10)
+                        ],
+                        image: DecorationImage(
+                          image: NetworkImage(data["image"]),
+                          fit: BoxFit.cover,
                         ),
-                        
                       ),
-                      child: BoldText(
-                        text: data["name"],
-                        size: 15,
-                        color: Colors.black,
+                      child: Container(
+                        padding: EdgeInsets.all(13),
+                        decoration: BoxDecoration(
+                            color: Colors.black.withOpacity(0.3),
+                            borderRadius: BorderRadius.circular(15)),
+                        child: BoldText(
+                          text: data["name"].toString().toUpperCase(),
+                          size: 15,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                   );
