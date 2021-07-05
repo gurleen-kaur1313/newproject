@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -12,8 +13,11 @@ import 'package:sampleapp/screens/export_screens.dart';
 class Register extends StatefulWidget {
   final PageController controller;
   final FirebaseAuth auth;
-  const Register({Key? key, required this.controller, required this.auth, })
-      : super(key: key);
+  Register({
+    Key? key,
+    required this.controller,
+    required this.auth,
+  }) : super(key: key);
 
   @override
   _RegisterState createState() => _RegisterState();
@@ -184,8 +188,7 @@ class _RegisterState extends State<Register> {
         });
       });
       return 0;
-    } 
-    else {
+    } else {
       try {
         await widget.auth
             .createUserWithEmailAndPassword(email: email, password: password);
@@ -199,8 +202,9 @@ class _RegisterState extends State<Register> {
         }
       }
     }
-
-     return 2;
+     
+        
+    return 2;
   }
 
   @override
@@ -281,7 +285,7 @@ class _RegisterState extends State<Register> {
               obscuringCharacter: "*",
               style: const TextStyle(fontSize: 18),
               decoration: InputDecoration(
-                 errorText:
+                errorText:
                     (fileds.passwordError.value) ? "Can't be empty!" : null,
                 labelText: "Password",
                 prefixIcon: const Icon(Icons.lock),

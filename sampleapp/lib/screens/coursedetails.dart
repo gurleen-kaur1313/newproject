@@ -6,11 +6,13 @@ class Content extends StatelessWidget {
   static Color red = Color(0xffce1d3f);
   static Color blue = Color(0xff222b56);
   static Color grey = Color(0xffc7cade);
+  static Color lightblue = Color(0xff483D8B);
+  static Color pink = Color(0xffffb6c1);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[100],
+      backgroundColor: blue,
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -29,7 +31,7 @@ class Content extends StatelessWidget {
                     height: 150,
                     width: 150,
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(25), color: blue),
+                        borderRadius: BorderRadius.circular(25), color: lightblue),
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -37,7 +39,7 @@ class Content extends StatelessWidget {
                         Icon(
                           Icons.book_rounded,
                           size: 50,
-                          color: grey,
+                          color: Colors.white,
                         ),
                         RegularText(
                             text: "Math course", color: Colors.white, size: 12)
@@ -50,15 +52,15 @@ class Content extends StatelessWidget {
                     height: 150,
                     width: 150,
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(25), color: blue),
+                        borderRadius: BorderRadius.circular(25), color: lightblue),
                     child: Column(
-                      mainAxisSize: MainAxisSize.min,
+                      mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Icon(
                           Icons.pending_actions,
                           size: 50,
-                          color: grey,
+                          color: Colors.white,
                         ),
                         RegularText(
                             text: "Practice tests",
@@ -75,18 +77,18 @@ class Content extends StatelessWidget {
                 margin: EdgeInsets.all(20),
                 padding: EdgeInsets.all(20),
                 decoration: BoxDecoration(
-                  color: grey,
+                  color: lightblue,
                   borderRadius: BorderRadius.circular(25),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
-                  mainAxisSize: MainAxisSize.max,
+                  mainAxisSize: MainAxisSize.min,
                   children: [
                     Container(
                       padding: EdgeInsets.all(10),
                       alignment: Alignment.centerLeft,
                       child: BoldText(
-                        color: blue,
+                        color: Colors.white,
                         text: "Content",
                         size: 17,
                       ),
@@ -227,37 +229,7 @@ class Content extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    alignment: Alignment.center,
-                                    margin: EdgeInsets.fromLTRB(6, 10, 5, 10),
-                                    padding: EdgeInsets.all(5),
-                                    height: 45,
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: grey,
-                                    ),
-                                    child: Icon(Icons.check, color: blue),
-                                  ),
-                                  Expanded(
-                                    child: Container(
-                                      padding: EdgeInsets.all(13),
-                                      decoration: BoxDecoration(
-                                        color: blue,
-                                        borderRadius: BorderRadius.circular(10),
-                                      ),
-                                      child: RegularText(
-                                        size: 15,
-                                        text: "Chapter 1: Number system",
-                                        color: grey,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
+                          
                             ],
                           ),
                         ],

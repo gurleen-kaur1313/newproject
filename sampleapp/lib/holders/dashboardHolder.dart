@@ -64,7 +64,7 @@ class _DashboardHolderState extends State<DashboardHolder> {
           Dashboard(auth: widget.auth,
               //   // controller: _controller,
               ),
-          Courses(),
+          Courses(auth: widget.auth,),
           Profile(auth: widget.auth,),
         ],
       )),

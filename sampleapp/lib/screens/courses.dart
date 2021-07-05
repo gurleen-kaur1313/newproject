@@ -1,15 +1,17 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:sampleapp/constants/texts.dart';
 
 class Courses extends StatelessWidget {
-  Courses({Key? key}) : super(key: key);
+  Courses({Key? key, required this.auth}) : super(key: key);
   static Color red = Color(0xffce1d3f);
   static Color blue = Color(0xff222b56);
   static Color grey = Color(0xffc7cade);
   static Color yellow = Color(0xffFFFF66);
   final FirebaseFirestore allsubjects = FirebaseFirestore.instance;
+  final FirebaseAuth auth;
 
   @override
   Widget build(BuildContext context) {
@@ -91,22 +93,37 @@ class Courses extends StatelessWidget {
                   Map<String, dynamic> data =
                       document.data() as Map<String, dynamic>;
 
-                  return Container(
-                    height: 150,
-                    width: 150,
-                    margin: EdgeInsets.all(10),
-                    padding: EdgeInsets.all(20),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(25),
-                      image: DecorationImage(image: NetworkImage(data["image"]),
-                      fit: BoxFit.cover,
-                      ),
+                  return GestureDetector(
+                    onTap:(){
+                      allsubjects.collection(auth.currentUser!.uid.toString()).doc(
+                        data["name"]
+                      ).set(
+                        {
+                          "subjectName":data["name"],
+                          "subjectImage":data["image"],
+                          "subjectChapters":data["chapters"],
+                          "subjectLectures":data["lectures"],
+                        }
+                      );
                       
-                    ),
-                    child: BoldText(
-                      text: data["name"],
-                      size: 15,
-                      color: Colors.black,
+                    },
+                    child: Container(
+                      height: 150,
+                      width: 150,
+                      margin: EdgeInsets.all(10),
+                      padding: EdgeInsets.all(20),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(25),
+                        image: DecorationImage(image: NetworkImage(data["image"]),
+                        fit: BoxFit.cover,
+                        ),
+                        
+                      ),
+                      child: BoldText(
+                        text: data["name"],
+                        size: 15,
+                        color: Colors.black,
+                      ),
                     ),
                   );
                 }).toList(),
