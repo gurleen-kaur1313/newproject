@@ -2,7 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:get/get.dart';
 import 'package:sampleapp/constants/texts.dart';
+import 'package:sampleapp/screens/export_screens.dart';
 
 class Courses extends StatelessWidget {
   Courses({Key? key, required this.auth}) : super(key: key);
@@ -115,6 +117,9 @@ class Courses extends StatelessWidget {
                         "subjectChapters": data["chapters"],
                         "subjectLectures": data["lectures"],
                       });
+                      
+                      Get.to(Content(x: data["name"],));
+                    
                     },
                     child: Container(
                       height: 150,
