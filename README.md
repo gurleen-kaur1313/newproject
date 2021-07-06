@@ -4,5 +4,5 @@ As the user clicks on any course it is added to users dashboard immediately for 
 The app is fully responsive with an interactive ui.
 
 # demonstration video
-[![Watch the video](https://i.imgur.com/vKb2F1B.png)](https://drive.google.com/file/d/16-K6T_coLhp-_DtLbtZxyC2uVOoj65Km/view?usp=sharing)
+[![Watch the video](https://i.imgur.com/vKb2F1B.png)](https://drive.google.com/file/d/15RC-6g6_1Ut3uYn09vLDMjSmEF9WHtT6/view?usp=sharing)
 <br> </br>
